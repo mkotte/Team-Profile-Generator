@@ -30,11 +30,22 @@ const managerQuestions = [
     }
 ];
 
+const generateNewTeam = () => {
 
+}
+
+const addNextEmployee = () => {
+    
+}
 
 const init = () => {
     inquirer
         .prompt(managerQuestions)
+        .then((answers) =>{ 
+            const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+            generateNewTeam(manager);
+            addNextEmployee();
+        })
 }
 
 init();
