@@ -29,9 +29,12 @@ const managerQuestions = [
         name:'managerOfficeNumber'
     }
 ];
+const employeeQs = [
+
+]
 
 const generateNewTeam = (data) => {
-    fs.writeFile('.dist/index.html', 
+    fs.writeFile('./dist/index.html', 
     `<!DOCTYPE html>
         <html>
             <head>
@@ -59,8 +62,7 @@ const generateNewTeam = (data) => {
                             </div>
                         </div>
                     </div>
-        `
-    )
+    `, (err) => {if (err) {throw err}});
 };
 
 const addNextEmployee = () => {
@@ -81,8 +83,12 @@ const addNextEmployee = () => {
                     </html>`
                     , (err) => {if (err) {throw err} else console.log('Successfully appended!')}) ;
             }
-        })
+        });
 };
+
+const addEngineer = () => {};
+
+const addIntern = () => {};
 
 const init = () => {
     inquirer
