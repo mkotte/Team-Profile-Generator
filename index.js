@@ -64,7 +64,7 @@ const generateNewTeam = (data) => {
                         </div>
                     </div>
     `, err => {
-        err ? console.log(err) : console.log("Sucess!!")
+        err ? console.log(err) : console.log("Success!!")
     });
 };
 
@@ -84,9 +84,19 @@ const addNextEmployee = () => {
                             </section>
                         </body>
                     </html>`, err => {
-                        err ? console.log(err) : console.log("Sucess!!")
+                        err ? console.log(err) : console.log("Success!!")
                     });
             }
+        });
+};
+
+const addEngineer =() => {
+    inquirer
+        .prompt(engineerQuestions)
+        .then((answers) => {
+            const engineer = new Engineer(answers.name, anwers.id, answers.email, answers.school);
+            generateEngineer(engineer);
+            addNextEmployee();
         });
 };
 
@@ -107,13 +117,21 @@ const generateEngineer = (data) => {
                 </div>
             </div>
         </div>`, err => {
-            err ? console.log(err) : console.log("Sucess!!") 
+            err ? console.log(err) : console.log("Success!!") 
         });
 };
 
-inquirer
+
+
+const addIntern =() => {
+    inquirer
         .prompt(internQuestions)
-        .then()
+        .then((answers) => {
+            const intern = new Intern(answers.name, anwers.id, answers.email, answers.school);
+            generateIntern(intern);
+            addNextEmployee();
+        });
+};
 
 const generateIntern = (data) => {
     fs.appendFile('./dist/index.html',
@@ -127,12 +145,12 @@ const generateIntern = (data) => {
                     <ul>
                         <li>ID: ${data.id}</li>
                         <li>Email: <a href="mailto:${data.email}">${data.email}</a></li>
-                        <li>Field of Study: ${data.fieldOfStudy}</li>
+                        <li>School: ${data.school}</li>
                     </ul>
                 </div>
             </div>
         </div>`, err => {
-        err ? console.log(err) : console.log("Sucess!!") 
+        err ? console.log(err) : console.log("Success!!") 
     });
 };
 
