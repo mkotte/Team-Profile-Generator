@@ -30,8 +30,59 @@ const managerQuestions = [
     }
 ];
 const employeeQs = [
+    {
+        type:'list',
+        message: 'What type of Employee would you like to add?',
+        name:  'role',
+        choices:['Engineer', 'Intern', 'Actually I am finished!']
+    },
+];
 
-]
+const internQuestions = [
+    {
+        type:'input',
+        message: 'What is the interns name?',
+        name:'name'
+    },
+    {
+        type:'input',
+        message: 'What is the interns id?',
+        name:'id'
+    },
+    {
+        type:'input',
+        message: 'What is the interns email?',
+        name:'email'
+    },
+    {
+        type:'input',
+        message: 'What is the interns school name?',
+        name:'school'
+    }
+];
+
+const engineerQuestions = [
+    {
+        type:'input',
+        message: 'What is the engineers name?',
+        name:'name'
+    },
+    {
+        type:'input',
+        message: 'What is the engineers id?',
+        name:'id'
+    },
+    {
+        type:'input',
+        message: 'What is the engineers email?',
+        name:'email'
+    },
+    {
+        type:'input',
+        message: 'What is the github engineers username?',
+        name:'github'
+    }
+];
 
 const generateNewTeam = (data) => {
     fs.writeFile('./dist/index.html', 
@@ -47,7 +98,7 @@ const generateNewTeam = (data) => {
                 />
             </head>
             <body>
-                <main class="jumbotron">
+                <main class="jumbotron vh-100" style="display:flex; justify-content:center;">
                     <div class="col-3">
                         <div class="card">
                             <div class="card-header">
@@ -80,11 +131,12 @@ const addNextEmployee = () => {
                     addIntern();
                     break;
                 default:
-                    fs.appendFile('./dist/index.html', `
-                            </section>
-                        </body>
-                    </html>`, err => {
-                        err ? console.log(err) : console.log("Success!!")
+                    fs.appendFile('./dist/index.html', 
+`        </section>
+    </body>
+</html>`,
+                     err => {
+                        err ? console.log(err) : console.log("Goodbye!!")
                     });
             }
         });
@@ -94,7 +146,7 @@ const addEngineer =() => {
     inquirer
         .prompt(engineerQuestions)
         .then((answers) => {
-            const engineer = new Engineer(answers.name, anwers.id, answers.email, answers.school);
+            const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
             generateEngineer(engineer);
             addNextEmployee();
         });
@@ -127,7 +179,7 @@ const addIntern =() => {
     inquirer
         .prompt(internQuestions)
         .then((answers) => {
-            const intern = new Intern(answers.name, anwers.id, answers.email, answers.school);
+            const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
             generateIntern(intern);
             addNextEmployee();
         });
@@ -139,7 +191,7 @@ const generateIntern = (data) => {
             <div class="card">
                 <div class="card-header">
                     <h2>${data.name}</h2>
-                    <h2>Inter</h2>
+                    <h2>Intern</h2>
                 </div>
                 <div class="card-body">
                     <ul>
