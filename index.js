@@ -83,46 +83,57 @@ const addNextEmployee = () => {
                     fs.appendFile('./dist/index.html', `
                             </section>
                         </body>
-                    </html>`
-                    , (err) => {if (err) {throw err} else console.log('Successfully appended!')}) ;
+                    </html>`, err => {
+                        err ? console.log(err) : console.log("Sucess!!")
+                    });
             }
         });
 };
 
-const addEngineer = () => {
-                    `<div class="col-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <h2>${data.name}</h2>
-                                <h2>Engineer</h2>
-                            </div>
-                            <div class="card-body">
-                                <ul>
-                                    <li>ID: ${data.id}</li>
-                                    <li>Email: <a href="mailto:${data.email}">${data.email}</a></li>
-                                    <li>GitHub Username: ${data.github}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>`
+const generateEngineer = (data) => {
+    fs.appendFile('./dist/index.html',
+        `<div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2>${data.name}</h2>
+                    <h2>Engineer</h2>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>ID: ${data.id}</li>
+                        <li>Email: <a href="mailto:${data.email}">${data.email}</a></li>
+                        <li>GitHub Username: ${data.github}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>`, err => {
+            err ? console.log(err) : console.log("Sucess!!") 
+        });
 };
 
-const addIntern = () => {
-                    `<div class="col-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <h2>${data.name}</h2>
-                                <h2>Inter</h2>
-                            </div>
-                            <div class="card-body">
-                                <ul>
-                                    <li>ID: ${data.id}</li>
-                                    <li>Email: <a href="mailto:${data.email}">${data.email}</a></li>
-                                    <li>Field of Study ${data.fieldOfStudy}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>`
+inquirer
+        .prompt(internQuestions)
+        .then()
+
+const generateIntern = (data) => {
+    fs.appendFile('./dist/index.html',
+        `<div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                    <h2>${data.name}</h2>
+                    <h2>Inter</h2>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>ID: ${data.id}</li>
+                        <li>Email: <a href="mailto:${data.email}">${data.email}</a></li>
+                        <li>Field of Study: ${data.fieldOfStudy}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>`, err => {
+        err ? console.log(err) : console.log("Sucess!!") 
+    });
 };
 
 const init = () => {
