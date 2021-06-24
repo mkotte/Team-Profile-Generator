@@ -52,6 +52,7 @@ const generateNewTeam = (data) => {
                         <div class="card">
                             <div class="card-header">
                                 <h2>${data.name}</h2>
+                                <h2>Manager</h2>
                             </div>
                             <div class="card-body">
                                 <ul>
@@ -62,7 +63,9 @@ const generateNewTeam = (data) => {
                             </div>
                         </div>
                     </div>
-    `, (err) => {if (err) {throw err}});
+    `, err => {
+        err ? console.log(err) : console.log("Sucess!!")
+    });
 };
 
 const addNextEmployee = () => {
@@ -77,7 +80,7 @@ const addNextEmployee = () => {
                     addIntern();
                     break;
                 default:
-                    fs.appendFile('.dist/index.html', `
+                    fs.appendFile('./dist/index.html', `
                             </section>
                         </body>
                     </html>`
@@ -86,9 +89,41 @@ const addNextEmployee = () => {
         });
 };
 
-const addEngineer = () => {};
+const addEngineer = () => {
+                    `<div class="col-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>${data.name}</h2>
+                                <h2>Engineer</h2>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>ID: ${data.id}</li>
+                                    <li>Email: <a href="mailto:${data.email}">${data.email}</a></li>
+                                    <li>GitHub Username: ${data.github}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>`
+};
 
-const addIntern = () => {};
+const addIntern = () => {
+                    `<div class="col-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>${data.name}</h2>
+                                <h2>Inter</h2>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>ID: ${data.id}</li>
+                                    <li>Email: <a href="mailto:${data.email}">${data.email}</a></li>
+                                    <li>Field of Study ${data.fieldOfStudy}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>`
+};
 
 const init = () => {
     inquirer
