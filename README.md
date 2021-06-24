@@ -43,4 +43,5 @@ THEN I exit the application, and the HTML is generated
 
 ## Links
 Walkthrough Video : https://drive.google.com/file/d/1adyiGoCe9YFlp9lupNeZgkCy9DiK3F3M/view
+
 Github Repository : https://github.com/mkotte/Team-Profile-Generator
