@@ -8,7 +8,7 @@ SO THAT I have quick access to their emails and GitHub profiles
 
 ## Technology Used
 * Node.js
-* Javascript
+* Jest
 * HTML
 * CSS/Bootstrap
 
